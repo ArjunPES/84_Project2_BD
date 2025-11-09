@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafka Streaming Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>\U0001f680 Kafka Dynamic Content Stream</h1>
+            <p>Real-time Topic Management & Monitoring Dashboard</p>
+        </header>
+
+        <!-- Statistics Cards -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <h3>Pending Topics</h3>
+                <p class="stat-value" id="pending-count">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Active Topics</h3>
+                <p class="stat-value" id="active-count">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Users</h3>
+                <p class="stat-value" id="users-count">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Subscriptions</h3>
+                <p class="stat-value" id="subs-count">0</p>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('pending')">Pending Topics</button>
+            <button class="tab-button" onclick="showTab('all-topics')">All Topics</button>
+            <button class="tab-button" onclick="showTab('subscriptions')">User Subscriptions</button>
+        </div>
+
+        <!-- Pending Topics Tab -->
+        <div id="pending-tab" class="tab-content active">
+            <h2>Pending Topics (Awaiting Approval)</h2>
+            <div id="pending-topics-list">
+                <p class="loading">Loading...</p>
+            </div>
+        </div>
+
+        <!-- All Topics Tab -->
+        <div id="all-topics-tab" class="tab-content">
+            <h2>All Topics</h2>
+            <div id="all-topics-list">
+                <p class="loading">Loading...</p>
+            </div>
+        </div>
+
+        <!-- Subscriptions Tab -->
+        <div id="subscriptions-tab" class="tab-content">
+            <h2>User-Topic Subscriptions</h2>
+            <div id="subscriptions-list">
+                <p class="loading">Loading...</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Auto-refreshes every 5 seconds | Last updated: <span id="last-update">Never</span></p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
